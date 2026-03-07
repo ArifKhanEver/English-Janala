@@ -11,14 +11,17 @@ async function loadLessonCards(id) {
     const data = await response.json();
 
     displayLessonCards(data.data);
+    
+    activeTabs(id);
+}
 
+function activeTabs(id) {
     const lessonbtn = document.getElementById(`lesson${id}`);
     const allbtn = document.querySelectorAll('.lessonBtn');
 
     allbtn.forEach(e=> e.classList.add('btn-outline'));
 
     lessonbtn.classList.remove('btn-outline');
-
 }
 
 function activeLoader(status) {
@@ -31,7 +34,11 @@ function activeLoader(status) {
     }
 }
 
-// {word: 'Eager', meaning: 'আগ্রহী', pronunciation: 'ইগার', level: 1, sentence: 'The kids were eager to open their gifts.', …}
+function pronounceWord(word) {
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = "en-EN";
+    window.speechSynthesis.speak(utterance);
+}
 
 function loadSynonyms(element) {
     const words = element.map(el=> `<span class="btn">${el}</span>`);
@@ -107,7 +114,7 @@ function displayLessonCards(words) {
                         <h5 class="text-[18px] font-semibold">"${word.meaning? word.meaning : "অর্থ পাওয়া যায়নি"}/${word.pronunciation ? word.pronunciation: "উচ্চারন পাওয়া যায়নি"}"</h5>
                         <div class="flex items-center justify-between text-black">
                             <button onclick="loadWordDetail(${word.id})" class="btn"><i class="fa-solid fa-circle-info"></i></button>
-                            <button class="btn"><i class="fa-solid fa-volume-high"></i></button>
+                            <button onclick="pronounceWord('${word.word}')" class="btn"><i class="fa-solid fa-volume-high"></i></button>
                         </div>
                     </div>`
 
@@ -142,4 +149,25 @@ function displayLessonTabs(lesson) {
 
 loadLessonTabs();
 
+
+document.getElementById('searchBtn').addEventListener('click', ()=> {
+    const searchInput = document.getElementById('searchInput').value.trim().toLowerCase();
+
+    console.log(searchInput)
+    
+    fetch('https://openapi.programming-hero.com/api/words/all')
+    .then(response => response.json())
+    .then(data=> {
+        const allWords = data.data;
+
+        const filterWords = allWords.filter(word => {
+            return word.word.toLowerCase().includes(searchInput);
+        })
+
+        displayLessonCards(filterWords);
+    })
+
+    document.querySelectorAll('.lessonBtn').forEach(e=>e.classList.add('btn-outline'));
+    
+})
 
