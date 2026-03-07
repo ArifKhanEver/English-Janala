@@ -4,9 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>English Janala</title>
+
+    <!-- tailwind and daisyui -->
+     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
-    <h1>Hello World!</h1>
+    <header>
+
+    </header>
+
+    <main class="p-7">
+
+
+        <section id="lessonContainer"  class="vocabSection text-center m-auto max-w-[80%]">
+            <h2 class="font-bold text-3xl text-center p-4">
+                <span class="text-[#00BCFF]">Let's</span> Learn Vocabularies
+            </h2>
+
+            <div id="lessionsContainer" class=" ">
+                <div id="lessonTabs" class="flex gap-4 justify-around flex-wrap">
+                    <!-- <button><i class="fa-solid fa-book-open"></i> Lesson -1</button> -->
+                </div>
+
+                <div id="loader" class="pt-9 hidden">
+                    <span class="loading loading-ring loading-xl"></span>
+                </div>
+
+                <div id="lessonContents" class=" bg-gray-100 p-8 mt-8 rounded-lg grid gap-4 grid-cols-1 md:grid-cols-3">
+                    <!-- <div class="bg-white p-6 text-center space-y-3 rounded-sm">
+                        <h3 class="text-[32px] font-bold">Eager</h3>
+                        <p>Meaning/Pronunciation</p>
+                        <h5 class="text-[32px] font-semibold">"আগ্রহী / ইগার"</h5>
+                        <div class="flex items-center justify-between text-black">
+                            <button class="btn"><i class="fa-solid fa-circle-info"></i></button>
+                            <button class="btn"><i class="fa-solid fa-volume-high"></i></button>
+                        </div>
+                    </div> -->
+
+                    <div class="text-center col-span-full">
+                        <p>আপনি এখনো কোন Lesson Select করেন নি।</p>
+                        <h3 class="text-[25px] font-medium">একটি Lesson Select করুন।</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section id="modalPop">
+            <!-- Open the modal using ID.showModal() method -->
+            <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box space-y-4">
+                <h3 class="text-2xl font-bold">Eager (<i class="fa-solid fa-microphone-lines"></i>:ইগার)</h3>
+                <div>
+                    <h5 class="font-bold text-xl">Meaning</h5>
+                    <p>আগ্রহী</p>
+                </div>
+                <div>
+                    <h5 class="font-bold text-xl">Example</h5>
+                    <p>The kids were eager to open their gifts.</p>
+                </div>
+                <div>
+                    <h5 class="font-bold text-xl">সমার্থক শব্দ গুলো</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <button class="btn">Word</button>
+                        <button class="btn">Word</button>
+                    </div>
+                </div>
+                <div class="modal-action">
+                <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn btn-primary">Complete Learning</button>
+                </form>
+                </div>
+            </div>
+            </dialog>
+        </section>
+    </main>
+
+
 
 
     <script src="script.js"></script>
