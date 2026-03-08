@@ -55,17 +55,17 @@ async function loadWordDetail(id) {
     modalSection.innerHTML = `
          <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
             <div class="modal-box space-y-4">
-                <h3 class="text-2xl font-bold">${data.data.word} (<i class="fa-solid fa-microphone-lines"></i>:${data.data.pronunciation})</h3>
+                <h3 class="text-2xl font-bold fontBangla">${data.data.word} (<i class="fa-solid fa-microphone-lines"></i>:${data.data.pronunciation})</h3>
                 <div>
                     <h5 class="font-bold text-xl">Meaning</h5>
-                    <p>${data.data.meaning}</p>
+                    <p class="fontBangla">${data.data.meaning}</p>
                 </div>
                 <div>
                     <h5 class="font-bold text-xl">Example</h5>
                     <p>${data.data.sentence}</p>
                 </div>
                 <div>
-                    <h5 class="font-bold text-xl">সমার্থক শব্দ গুলো</h5>
+                    <h5 class="font-bold text-xl fontBangla">সমার্থক শব্দ গুলো</h5>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         ${loadSynonyms(data.data.synonyms)}
                     </div>
@@ -96,8 +96,8 @@ function displayLessonCards(words) {
             lessonContents.innerHTML=`
                 <div class="text-center col-span-full">
                     <img src="./assets/alert-error.png" class="m-auto">
-                    <p>এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
-                    <h3 class="text-[25px] font-medium">নেক্সট Lesson এ যান</h3>
+                    <p class="fontBangla">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
+                    <h3 class="text-[25px] font-medium fontBangla">নেক্সট Lesson এ যান</h3>
                 </div>
             `;
         
@@ -109,9 +109,9 @@ function displayLessonCards(words) {
 
         const wordCard = document.createElement("div");
         wordCard.innerHTML = `<div class="bg-white p-6 text-center space-y-3 rounded-sm">
-                        <h3 class="text-[26px] font-bold">${word.word? word.word : "শব্দ পাওয়া যায়নি"}</h3>
+                        <h3 class="text-[26px] font-bold fontBangla">${word.word? word.word : "শব্দ পাওয়া যায়নি"}</h3>
                         <p>Meaning/Pronunciation</p>
-                        <h5 class="text-[18px] font-semibold">"${word.meaning? word.meaning : "অর্থ পাওয়া যায়নি"}/${word.pronunciation ? word.pronunciation: "উচ্চারন পাওয়া যায়নি"}"</h5>
+                        <h5 class="text-[18px] font-semibold fontBangla">"${word.meaning? word.meaning : "অর্থ পাওয়া যায়নি"}/${word.pronunciation ? word.pronunciation: "উচ্চারন পাওয়া যায়নি"}"</h5>
                         <div class="flex items-center justify-between text-black">
                             <button onclick="loadWordDetail(${word.id})" class="btn"><i class="fa-solid fa-circle-info"></i></button>
                             <button onclick="pronounceWord('${word.word}')" class="btn"><i class="fa-solid fa-volume-high"></i></button>
